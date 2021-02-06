@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import MaterialTable from "material-table";
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
@@ -15,6 +15,7 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
+import ImageUploader from "react-images-upload";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -41,7 +42,10 @@ const tableIcons = {
 };
 
 function App() {
-  const { useState } = React;
+  const [selectedFile, setSelectedFile] = useState(null);
+  const AddImage = (pictureFiles, pictureDataURLs) => {
+    setSelectedFile(pictureFiles);
+  };
 
   const [columns, setColumns] = useState([
     { title: "Name", field: "name" },
@@ -56,15 +60,45 @@ function App() {
       field: "birthCity",
       lookup: { 34: "İstanbul", 63: "Şanlıurfa" },
     },
+    {
+      title: "Avatar",
+      field: "imageUrl",
+      render: (rowData) => (
+        <img
+          src={rowData.imageUrl}
+          style={{ width: 40, borderRadius: "50%" }}
+          alt=""
+        />
+      ),
+      editComponent: () => (
+        <ImageUploader
+          withIcon={false}
+          withPreview={true}
+          label=""
+          buttonText="Upload Images"
+          onChange={AddImage}
+          imgExtension={[".jpg", ".gif", ".png", ".gif", ".svg"]}
+          maxFileSize={1048576}
+          fileSizeError=" file size is too big"
+        />
+      ),
+    },
   ]);
 
   const [data, setData] = useState([
-    { name: "Mehmet", surname: "Baran", birthYear: Date.now(), birthCity: 63 },
+    {
+      name: "Mehmet",
+      surname: "Baran",
+      birthYear: Date.now(),
+      birthCity: 63,
+      imageUrl: "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4",
+    },
     {
       name: "Zerya Betül",
       surname: "Baran",
       birthYear: Date.now(),
       birthCity: 34,
+      imageUrl: "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4",
     },
   ]);
 
@@ -93,7 +127,6 @@ function App() {
               const index = oldData.tableData.id;
               dataUpdate[index] = newData;
               setData([...dataUpdate]);
-
               resolve();
             }, 1000);
           }),
