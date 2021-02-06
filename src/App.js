@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import MaterialTable from "material-table";
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
@@ -50,7 +50,7 @@ function App() {
       field: "surname",
       initialEditValue: "initial edit value",
     },
-    { title: "Birth Year", field: "birthYear", type: "numeric" },
+    { title: "Birth Date", field: "birthYear", type: "date" },
     {
       title: "Birth Place",
       field: "birthCity",
@@ -59,8 +59,13 @@ function App() {
   ]);
 
   const [data, setData] = useState([
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Zerya Betül", surname: "Baran", birthYear: 2017, birthCity: 34 },
+    { name: "Mehmet", surname: "Baran", birthYear: Date.now(), birthCity: 63 },
+    {
+      name: "Zerya Betül",
+      surname: "Baran",
+      birthYear: Date.now(),
+      birthCity: 34,
+    },
   ]);
 
   return (

@@ -89,6 +89,7 @@ function AppTree() {
       birthCity: 34,
       sex: "Female",
       type: "child",
+      parentId: 1,
     },
     {
       id: 6,
