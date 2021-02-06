@@ -40,47 +40,113 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-function App() {
-  const { useState } = React;
-
-  const [columns, setColumns] = useState([
-    { title: "Name", field: "name" },
-    {
-      title: "Surname",
-      field: "surname",
-      initialEditValue: "initial edit value",
-    },
-    { title: "Birth Year", field: "birthYear", type: "numeric" },
-    {
-      title: "Birth Place",
-      field: "birthCity",
-      lookup: { 34: "İstanbul", 63: "Şanlıurfa" },
-    },
-  ]);
-
+function AppTree() {
   const [data, setData] = useState([
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    { name: "Zerya Betül", surname: "Baran", birthYear: 2017, birthCity: 34 },
+    {
+      id: 1,
+      name: "a",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 63,
+      sex: "Male",
+      type: "adult",
+    },
+    {
+      id: 2,
+      name: "b",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "adult",
+      parentId: 1,
+    },
+    {
+      id: 3,
+      name: "c",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 1,
+    },
+    {
+      id: 4,
+      name: "d",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 3,
+    },
+    {
+      id: 5,
+      name: "e",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+    },
+    {
+      id: 6,
+      name: "f",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 5,
+    },
+    {
+      id: 7,
+      name: "e",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 6,
+    },
+    {
+      id: 8,
+      name: "e",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 7,
+    },
   ]);
-
   return (
     <MaterialTable
       style={{
         fontFamily: "monospace",
         fontSize: "2rem",
       }}
-      icons={tableIcons}
-      title="Editable Preview"
-      columns={columns}
       data={data}
+      icons={tableIcons}
+      title="Basic Tree Data Preview"
+      columns={[
+        { title: "Adı", field: "name" },
+        { title: "Soyadı", field: "surname" },
+        { title: "Cinsiyet", field: "sex" },
+        { title: "Tipi", field: "type", removable: false },
+        { title: "Doğum Yılı", field: "birthYear", type: "numeric" },
+        {
+          title: "Doğum Yeri",
+          field: "birthCity",
+          lookup: { 34: "İstanbul", 63: "Şanlıurfa" },
+        },
+      ]}
+      parentChildData={(row, rows) => rows.find((a) => a.id === row.parentId)}
+      options={{
+        selection: true,
+      }}
       editable={{
-        onRowAdd: (newData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              setData([...data, newData]);
-              resolve();
-            }, 1000);
-          }),
         onRowUpdate: (newData, oldData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -99,7 +165,6 @@ function App() {
               const index = oldData.tableData.id;
               dataDelete.splice(index, 1);
               setData([...dataDelete]);
-
               resolve();
             }, 1000);
           }),
@@ -108,4 +173,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppTree;
