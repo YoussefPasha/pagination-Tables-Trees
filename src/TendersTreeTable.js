@@ -43,7 +43,7 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-export default function TenderRevisions(props) {
+export default function TendersTreeTable(props) {
   const [data, setData] = useState([
     {
       tenderNo: "0",
@@ -220,29 +220,6 @@ export default function TenderRevisions(props) {
         },
       ]}
       data={data}
-      detailPanel={[
-        {
-          tooltip: "Show Data",
-          render: (rowData) => {
-            return (
-              <div
-                style={{
-                  fontSize: "1.3rem",
-                  textAlign: "center",
-                  fontFamily: "monospace",
-                  margin: "3rem",
-                }}
-              >
-                <div style={{ margin: "2rem" }}>
-                  <Box border={3} borderColor="#8BC34A" borderRadius={6}>
-                    <TenderTree />
-                  </Box>
-                </div>
-              </div>
-            );
-          },
-        },
-      ]}
     />
   );
 }

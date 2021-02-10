@@ -15,9 +15,10 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { Box } from "@material-ui/core";
-import AppTree from "./AppTree";
-import TenderTree from "./TenderTree";
+import TendersTreeTable from "./TendersTreeTable";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -43,185 +44,168 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-export default function TenderRevisions(props) {
+function TenderTree() {
   const [data, setData] = useState([
     {
-      tenderNo: "0",
-      eng_desc:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      ar_desc:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      main_contractor: "0",
-      client: "0",
-      country: "1",
-      state: "1",
-      city: "1",
-      eng_note:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      ar_note:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      id: 1,
+      name: "a",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 63,
+      sex: "Male",
+      type: "adult",
     },
     {
-      tenderNo: "1",
-      eng_desc:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      ar_desc:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      main_contractor: "1",
-      client: "1",
-      country: "0",
-      state: "1",
-      city: "1",
-      eng_note:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      ar_note:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      id: 2,
+      name: "b",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "adult",
+      parentId: 1,
     },
     {
-      tenderNo: "2",
-      eng_desc:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      ar_desc:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      main_contractor: "0",
-      client: "0",
-      country: "0",
-      state: "0",
-      city: "1",
-      eng_note:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
-      ar_note:
-        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      id: 3,
+      name: "c",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 1,
+    },
+    {
+      id: 4,
+      name: "d",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 3,
+    },
+    {
+      id: 5,
+      name: "e",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 1,
+    },
+    {
+      id: 6,
+      name: "f",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 5,
+    },
+    {
+      id: 7,
+      name: "e",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 6,
+    },
+    {
+      id: 8,
+      name: "e",
+      surname: "Baran",
+      birthYear: 1987,
+      birthCity: 34,
+      sex: "Female",
+      type: "child",
+      parentId: 7,
     },
   ]);
   return (
     <MaterialTable
-      icons={tableIcons}
       style={{
         fontFamily: "monospace",
         fontSize: "1.2rem",
       }}
-      title="Tender Revisions"
+      data={data}
+      icons={tableIcons}
+      title="Boq Tree"
+      options={{}}
       columns={[
         {
-          title: "Tender-Num",
-          field: "tenderNo",
+          title: "Adı",
+          field: "name",
           headerStyle: {
             fontFamily: "system-ui",
             fontSize: "0.9rem",
             fontWeight: "bold",
             color: "#0288D1",
           },
-          align: "center",
         },
         {
-          title: "English Description",
-          field: "eng_desc",
+          title: "Soyadı",
+          field: "surname",
           headerStyle: {
             fontFamily: "system-ui",
             fontSize: "0.9rem",
             fontWeight: "bold",
             color: "#0288D1",
           },
-          align: "center",
         },
         {
-          title: "Client",
-          field: "client",
-          lookup: { 0: "CC", 1: "BB" },
+          title: "Cinsiyet",
+          field: "sex",
           headerStyle: {
             fontFamily: "system-ui",
             fontSize: "0.9rem",
             fontWeight: "bold",
             color: "#0288D1",
           },
-          align: "center",
         },
         {
-          title: "Arabic Description",
-          field: "ar_desc",
+          title: "Tipi",
+          field: "type",
+          removable: false,
           headerStyle: {
             fontFamily: "system-ui",
             fontSize: "0.9rem",
             fontWeight: "bold",
             color: "#0288D1",
           },
-          align: "center",
         },
         {
-          title: "Main Contractor",
-          field: "main_contractor",
-          lookup: { 0: "MM", 1: "NN" },
+          title: "Doğum Yılı",
+          field: "birthYear",
+          type: "numeric",
           headerStyle: {
             fontFamily: "system-ui",
             fontSize: "0.9rem",
             fontWeight: "bold",
             color: "#0288D1",
           },
-          align: "center",
         },
         {
-          title: "Country",
-          field: "country",
-          lookup: { 0: "MM", 1: "NN" },
+          title: "Doğum Yeri",
+          field: "birthCity",
+          lookup: { 34: "İstanbul", 63: "Şanlıurfa" },
           headerStyle: {
             fontFamily: "system-ui",
             fontSize: "0.9rem",
             fontWeight: "bold",
             color: "#0288D1",
           },
-          align: "center",
-        },
-        {
-          title: "State",
-          field: "state",
-          lookup: { 0: "MM", 1: "NN" },
-          headerStyle: {
-            fontFamily: "system-ui",
-            fontSize: "0.9rem",
-            fontWeight: "bold",
-            color: "#0288D1",
-          },
-          align: "center",
-        },
-        {
-          title: "City",
-          field: "city",
-          lookup: { 0: "MM", 1: "NN" },
-          headerStyle: {
-            fontFamily: "system-ui",
-            fontSize: "0.9rem",
-            fontWeight: "bold",
-            color: "#0288D1",
-          },
-          align: "center",
-        },
-        {
-          title: "English Note",
-          field: "eng_note",
-          headerStyle: {
-            fontFamily: "system-ui",
-            fontSize: "0.9rem",
-            fontWeight: "bold",
-            color: "#0288D1",
-          },
-          align: "center",
-        },
-        {
-          title: "Arabic Note",
-          field: "ar_note",
-          headerStyle: {
-            fontFamily: "system-ui",
-            fontSize: "0.9rem",
-            fontWeight: "bold",
-            color: "#0288D1",
-          },
-          align: "center",
         },
       ]}
-      data={data}
+      parentChildData={(row, rows) => rows.find((a) => a.id === row.parentId)}
       detailPanel={[
         {
+          icon: VisibilityIcon,
+          openIcon: VisibilityOffIcon,
           tooltip: "Show Data",
           render: (rowData) => {
             return (
@@ -235,7 +219,7 @@ export default function TenderRevisions(props) {
               >
                 <div style={{ margin: "2rem" }}>
                   <Box border={3} borderColor="#8BC34A" borderRadius={6}>
-                    <TenderTree />
+                    <TendersTreeTable />
                   </Box>
                 </div>
               </div>
@@ -246,3 +230,5 @@ export default function TenderRevisions(props) {
     />
   );
 }
+
+export default TenderTree;

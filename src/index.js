@@ -2,6 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import AppTree from "./AppTree";
-import SelectedRowStyling from "./TenderTables";
+import Tender from "./Tender";
 
-ReactDOM.render(<AppTree />, document.getElementById("root"));
+ReactDOM.render(<Tender />, document.getElementById("root"));

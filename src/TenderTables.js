@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import MaterialTable from "material-table";
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
@@ -15,9 +15,9 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import TenderSubTable from "./TenderSubTable";
 import { Box } from "@material-ui/core";
 import TenderRevisions from "./TenderRevisions";
+import { SplitText } from "@cyriacbr/react-split-text";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -43,142 +43,209 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-export default function SelectedRowStyling() {
-  const { useState } = React;
-  const [selectedRow, setSelectedRow] = useState(null);
-  const [extendedData, setExtendedData] = useState([
+export default function MultipleDetailPanels() {
+  const [data, setData] = useState([
     {
       tenderNo: "0",
-      eng_desc: "dadsadssdadasasdasdasdsad",
-      ar_desc: "dasdasadssadsaddsadsa",
-      main_contractor: "dsadasdsa",
-      client: "sdadsa",
-      country: "sadassad",
-      state: "dasads",
-      city: "sadsadsa",
-      eng_note: "dsadas",
-      ar_note: "dsadsadsadsa",
-      revisions: [
-        {
-          rev_no: "0",
-          subData: "dsadsa",
-          issueDate: "dsadas",
-          status: 0,
-          eng_desc: "asddsadsasa",
-          ar_desc: "dasdsadsa",
-          eng_note: "sadsadsa",
-          ar_note: "dsadsa",
-        },
-        {
-          rev_no: "1",
-          subData: "111dsadsa",
-          issueDate: "111dsadas",
-          status: 1,
-          eng_desc: "111asddsadsasa",
-          ar_desc: "11dasdsadsa",
-          eng_note: "111sadsadsa",
-          ar_note: "111dsadsa",
-        },
-      ],
+      eng_desc:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      ar_desc:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      main_contractor: "0",
+      client: "0",
+      country: "1",
+      state: "1",
+      city: "1",
+      eng_note:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      ar_note:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
     },
     {
       tenderNo: "1",
-      eng_desc: "1dadsadssdadasasdasdasdsad",
-      ar_desc: "1dasdasadssadsaddsadsa",
-      main_contractor: "1dsadasdsa",
-      client: "1sdadsa",
-      country: "1sadassad",
-      state: "1dasads",
-      city: "1sadsadsa",
-      eng_note: "1dsadas",
-      ar_note: "dsadsadsadsa",
-      revisions: [
-        {
-          rev_no: "0",
-          subData: "dsadsa",
-          issueDate: "dsadas",
-          status: "Good",
-          eng_desc: "asddsadsasa",
-          ar_desc: "dasdsadsa",
-          eng_note: "sadsadsa",
-          ar_note: "dsadsa",
-        },
-        {
-          rev_no: "1",
-          subData: "111dsadsa",
-          issueDate: "111dsadas",
-          status: "111dasdsa",
-          eng_desc: "111asddsadsasa",
-          ar_desc: "11dasdsadsa",
-          eng_note: "111sadsadsa",
-          ar_note: "111dsadsa",
-        },
-      ],
+      eng_desc:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      ar_desc:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      main_contractor: "1",
+      client: "1",
+      country: "0",
+      state: "1",
+      city: "1",
+      eng_note:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      ar_note:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
     },
     {
       tenderNo: "2",
-      eng_desc: "2dadsadssdadasasdasdasdsad",
-      ar_desc: "2dasdasadssadsaddsadsa",
-      main_contractor: "2dsadasdsa",
-      client: "2sdadsa",
-      country: "2sadassad",
-      state: "2dasads",
-      city: "2sadsadsa",
-      eng_note: "2dsadas",
-      ar_note: "2dsadsadsadsa",
-      revisions: [
-        {
-          rev_no: "0",
-          subData: "dsadsa",
-          issueDate: "dsadas",
-          status: "dasdsa",
-          eng_desc: "asddsadsasa",
-          ar_desc: "dasdsadsa",
-          eng_note: "sadsadsa",
-          ar_note: "dsadsa",
-        },
-        {
-          rev_no: "1",
-          subData: "111dsadsa",
-          issueDate: "111dsadas",
-          status: "111dasdsa",
-          eng_desc: "111asddsadsasa",
-          ar_desc: "11dasdsadsa",
-          eng_note: "111sadsadsa",
-          ar_note: "111dsadsa",
-        },
-      ],
+      eng_desc:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      ar_desc:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      main_contractor: "0",
+      client: "0",
+      country: "0",
+      state: "0",
+      city: "1",
+      eng_note:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
+      ar_note:
+        "We all have our own techniques, but one of the most effective techniques is to actually ",
     },
   ]);
-
   return (
-    <Box border={1} style={{ margin: "6rem", width: "90%" }}>
-      <MaterialTable
-        style={{
-          fontFamily: "monospace",
-          fontSize: "2rem",
-          marginBottom: "6rem",
-        }}
-        icons={tableIcons}
-        title="Selected Row Styling Preview"
-        columns={[
-          { title: "TENDER No", field: "tenderNo" },
-          { title: "English Description", field: "eng_desc" },
-          { title: "Client", field: "client" },
-        ]}
-        data={extendedData}
-        onRowClick={(evt, selectedRow) =>
-          setSelectedRow(selectedRow.tableData.id)
-        }
-        options={{
-          rowStyle: (rowData) => ({
-            backgroundColor:
-              selectedRow === rowData.tableData.id ? "#536DFE" : "#FFF",
-          }),
-        }}
-      />
-      <TenderSubTable />
-      <TenderRevisions data={extendedData[0].revisions} />
-    </Box>
+    <MaterialTable
+      icons={tableIcons}
+      style={{
+        fontFamily: "monospace",
+        fontSize: "1.2rem",
+      }}
+      title="Tenders"
+      columns={[
+        {
+          title: "Tender-Num",
+          field: "tenderNo",
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "English Description",
+          field: "eng_desc",
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "Client",
+          field: "client",
+          lookup: { 0: "CC", 1: "BB" },
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "Arabic Description",
+          field: "ar_desc",
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "Main Contractor",
+          field: "main_contractor",
+          lookup: { 0: "MM", 1: "NN" },
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "Country",
+          field: "country",
+          lookup: { 0: "MM", 1: "NN" },
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "State",
+          field: "state",
+          lookup: { 0: "MM", 1: "NN" },
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "City",
+          field: "city",
+          lookup: { 0: "MM", 1: "NN" },
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "English Note",
+          field: "eng_note",
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+        {
+          title: "Arabic Note",
+          field: "ar_note",
+          headerStyle: {
+            fontFamily: "system-ui",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "#0288D1",
+          },
+          align: "center",
+        },
+      ]}
+      data={data}
+      options={{
+        tableLayout: "fixed",
+      }}
+      detailPanel={[
+        {
+          tooltip: "Show Data",
+          render: (rowData) => {
+            return (
+              <div
+                style={{
+                  fontSize: "1.3rem",
+                  textAlign: "center",
+                  fontFamily: "monospace",
+                  margin: "3rem",
+                }}
+              >
+                <div style={{ margin: "2rem" }}>
+                  <Box border={3} borderColor="#8BC34A" borderRadius={6}>
+                    <TenderRevisions />
+                  </Box>
+                </div>
+              </div>
+            );
+          },
+        },
+      ]}
+    />
   );
 }
