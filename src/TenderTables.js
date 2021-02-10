@@ -222,6 +222,7 @@ export default function MultipleDetailPanels() {
       data={data}
       options={{
         tableLayout: "fixed",
+        doubleHorizontalScroll: true,
       }}
       detailPanel={[
         {

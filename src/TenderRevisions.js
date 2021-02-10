@@ -220,6 +220,10 @@ export default function TenderRevisions(props) {
         },
       ]}
       data={data}
+      options={{
+        tableLayout: "fixed",
+        doubleHorizontalScroll: true,
+      }}
       detailPanel={[
         {
           tooltip: "Show Data",

@@ -102,6 +102,10 @@ export default function TendersTreeTable(props) {
         fontSize: "1.2rem",
       }}
       title="Tender Revisions"
+      options={{
+        tableLayout: "fixed",
+        doubleHorizontalScroll: true,
+      }}
       columns={[
         {
           title: "Tender-Num",

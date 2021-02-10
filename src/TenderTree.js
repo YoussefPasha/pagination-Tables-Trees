@@ -135,7 +135,6 @@ function TenderTree() {
       data={data}
       icons={tableIcons}
       title="Boq Tree"
-      options={{}}
       columns={[
         {
           title: "Adı",
@@ -227,6 +226,10 @@ function TenderTree() {
           },
         },
       ]}
+      options={{
+        tableLayout: "auto",
+        doubleHorizontalScroll: true,
+      }}
     />
   );
 }
