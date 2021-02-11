@@ -48,24 +48,43 @@ function Attachments() {
 
   const [columns, setColumns] = useState([
     {
-      title: "SubDivisions",
-      field: "subDivisions",
-      lookup: { 0: "1211", 1: "1322" },
+      title: "Attachment Type",
+      field: "attachmentType",
+      lookup: { 0: "PDF", 1: "EXCEL" },
     },
     {
-      title: "Percentage",
-      field: "percentage",
+      title: "IN/OUT",
+      field: "in_out",
+      lookup: { 0: "IN", 1: "OUT" },
+    },
+    {
+      title: "English Description",
+      field: "eng_desc",
+    },
+    {
+      title: "Arabic Description",
+      field: "ar_desc",
+    },
+    {
+      title: "Document Code	",
+      field: "dc",
     },
   ]);
 
   const [data, setData] = useState([
     {
-      subDivisions: 0,
-      percentage: "100%",
+      attachmentType: 0,
+      in_out: 0,
+      eng_desc: "hello there i am here ",
+      ar_desc: "hello there i am here ",
+      dc: "",
     },
     {
-      subDivisions: 1,
-      percentage: "60%",
+      attachmentType: 0,
+      in_out: 0,
+      eng_desc: "hello there i am here ",
+      ar_desc: "hello there i am here ",
+      dc: "",
     },
   ]);
 
