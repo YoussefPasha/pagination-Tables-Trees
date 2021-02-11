@@ -15,8 +15,9 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import { Box } from "@material-ui/core";
 import SubDivisions from "./SubDivisions";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -116,6 +117,8 @@ function Divisions() {
       }}
       detailPanel={[
         {
+          icon: VisibilityIcon,
+          openIcon: VisibilityOffIcon,
           tooltip: "Show Data",
           render: (rowData) => {
             return (
@@ -128,9 +131,7 @@ function Divisions() {
                 }}
               >
                 <div style={{ margin: "2rem" }}>
-                  <Box border={3} borderColor="#8BC34A" borderRadius={6}>
-                    <SubDivisions />
-                  </Box>
+                  <SubDivisions />
                 </div>
               </div>
             );

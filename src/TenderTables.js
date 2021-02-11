@@ -16,6 +16,8 @@ import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
 import TabsButtonAuto from "./TabPanel";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -224,6 +226,8 @@ export default function MultipleDetailPanels() {
       }}
       detailPanel={[
         {
+          icon: VisibilityIcon,
+          openIcon: VisibilityOffIcon,
           tooltip: "Show Data",
           render: (rowData) => {
             return (

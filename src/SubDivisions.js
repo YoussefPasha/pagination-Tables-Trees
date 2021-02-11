@@ -74,6 +74,7 @@ function SubDivisions() {
       style={{
         fontFamily: "monospace",
         fontSize: "2rem",
+        width: "80%",
       }}
       icons={tableIcons}
       title="Editable Preview"

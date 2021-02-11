@@ -68,13 +68,13 @@ function SubContractors() {
       style={{
         fontFamily: "monospace",
         fontSize: "2rem",
+        width: "60%",
       }}
       icons={tableIcons}
       title="Editable Preview"
       columns={columns}
       data={data}
       options={{
-        tableLayout: "fixed",
         doubleHorizontalScroll: true,
       }}
       editable={{
