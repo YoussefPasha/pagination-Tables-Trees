@@ -15,9 +15,7 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import { Box } from "@material-ui/core";
-import TenderRevisions from "./TenderRevisions";
-import { SplitText } from "@cyriacbr/react-split-text";
+import TabsButtonAuto from "./TabPanel";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -238,9 +236,7 @@ export default function MultipleDetailPanels() {
                 }}
               >
                 <div style={{ margin: "2rem" }}>
-                  <Box border={3} borderColor="#8BC34A" borderRadius={6}>
-                    <TenderRevisions />
-                  </Box>
+                  <TabsButtonAuto />
                 </div>
               </div>
             );

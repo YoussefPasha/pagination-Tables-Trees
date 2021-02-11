@@ -15,9 +15,7 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import { Box } from "@material-ui/core";
-import AppTree from "./AppTree";
-import TenderTree from "./TenderTree";
+import RevisionPanel from "./RevisionPanel";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -238,9 +236,7 @@ export default function TenderRevisions(props) {
                 }}
               >
                 <div style={{ margin: "2rem" }}>
-                  <Box border={3} borderColor="#8BC34A" borderRadius={6}>
-                    <TenderTree />
-                  </Box>
+                  <RevisionPanel />
                 </div>
               </div>
             );
